@@ -2,10 +2,11 @@
   "compilerOptions": {
     "sourceMap": true,
     "outDir": "dist",
-    "strict": true,
+    "strict": false,
     "lib": ["esnext"],
     "esModuleInterop": true,
-    "noImplicitAny": false,
-    "typeRoots": ["./node_modules/@types", "./types"]
-  }
+    "typeRoots": ["./node_modules/@types", "./types"],
+    "skipLibCheck": true
+  },
+  "include": ["src/**/*.ts"]
 }

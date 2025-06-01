@@ -11,13 +11,32 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 app.get("/", (req, res) => {
-  console.log({ message: "Hello from express!" });
   res.status(200);
-  res.json({ message: "hello" });
+  res.json({ message: "YabbaDabbaDoo!" });
 });
 
 app.use("/api", protect, router);
 app.post("/user", createNewUser);
 app.post("/signin", signin);
+
+app.use((err, req, res, next) => {
+  if (err.type === "auth") {
+    res.status(401).json({ message: "unauthorized" });
+  } else if (err.type === "input") {
+    res.status(400).json({ message: "invalid input" });
+  } else {
+    res.status(500).json({ message: "Ooopsie Daisy, Server Error" });
+  }
+});
+
+router.use((err, req, res, next) => {
+  if (err.type === "auth") {
+    res.status(401).json({ message: "unauthorized" });
+  } else if (err.type === "input") {
+    res.status(400).json({ message: "invalid input" });
+  } else {
+    res.status(500).json({ message: "Ooopsie Daisy, Server Error" });
+  }
+});
 
 export default app;
