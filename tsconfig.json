@@ -1,12 +1,15 @@
 {
   "compilerOptions": {
     "sourceMap": true,
-    "outDir": "dist",
+    "outDir": "./dist",
+    "rootDir": "./src",
     "strict": false,
     "lib": ["esnext"],
     "esModuleInterop": true,
-    "typeRoots": ["./node_modules/@types", "./types"],
-    "skipLibCheck": true
+    "declaration": true,
+    "target": "es2024",
+    "moduleResolution": "node",
+    "module": "commonjs"
   },
   "include": ["src/**/*.ts"]
 }
